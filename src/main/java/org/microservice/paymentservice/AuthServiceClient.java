@@ -11,5 +11,6 @@ import java.util.Map;
 public interface AuthServiceClient {
 
     @PostMapping("/token/validate")
-    ResponseEntity<Map<String, Object>> validateToken(@RequestBody Map<String, String> request);
+    ResponseEntity<?> validateToken(RequestHeader("Authorization") String token);
+    //ResponseEntity<Map<String, Object>> validateToken(@RequestBody Map<String, String> request);
 }
