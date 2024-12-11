@@ -15,7 +15,7 @@ public class PaymentController {
     private AuthServiceClient authServiceClient;
 
     @PostMapping("")
-    public ResponseEntity<?> checkToken(@RequestHeader("Authorization") String authorizationHeader) {
+    public ResponseEntity<?> checkToken(@RequestHeader("Authorization") String token) {
         try {
             System.out.println(token);
             ResponseEntity<?> response = authServiceClient.validateToken(token);
