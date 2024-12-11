@@ -15,10 +15,10 @@ public class PaymentController {
     private AuthServiceClient authServiceClient;
 
     @PostMapping("")
-    public ResponseEntity<?> checkToken(@RequestBody Map<String, String> token) {
+    public ResponseEntity<?> checkToken(@RequestHeader("Authorization") String authorizationHeader) {
         try {
             System.out.println(token);
-            ResponseEntity<Map<String, Object>> response = authServiceClient.validateToken(token);
+            ResponseEntity<?> response = authServiceClient.validateToken(token);
             return ResponseEntity.ok(response.getBody());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token validation failed: " + e.getMessage());
